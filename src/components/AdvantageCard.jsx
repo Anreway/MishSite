@@ -26,7 +26,7 @@ const AdvantageCard = ({
     >
       <div className="advantage-card__video-background">
         <video
-          preload="none"
+          preload="metadata"
           loop
           muted
           playsInline
