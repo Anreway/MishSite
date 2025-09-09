@@ -29,14 +29,13 @@ const VideoCard = ({
         <div className="video-container tilted-card-img">
           <video
             preload="metadata"
+            autoPlay
             loop
             muted
             playsInline
             className="tilted-card-img"
-            onLoadStart={() => console.log('Video loading started')}
-            onCanPlayThrough={() => {
-              const video = document.querySelector('.tilted-card-img video');
-              if (video) video.play().catch(e => console.log('Video autoplay failed:', e));
+            onLoadedData={(e) => {
+              e.target.play().catch(err => console.log('Video autoplay failed:', err));
             }}
             onError={(e) => console.log('Video load error:', e)}
           >

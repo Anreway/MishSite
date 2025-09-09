@@ -27,12 +27,13 @@ const AdvantageCard = ({
       <div className="advantage-card__video-background">
         <video
           preload="metadata"
+          autoPlay
           loop
           muted
           playsInline
           className="advantage-card__video"
-          onMouseEnter={(e) => {
-            e.target.play().catch(err => console.log('Video play failed:', err));
+          onLoadedData={(e) => {
+            e.target.play().catch(err => console.log('Video autoplay failed:', err));
           }}
           onError={(e) => console.log('Advantage video error:', e)}
         >
