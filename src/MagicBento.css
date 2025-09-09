@@ -190,6 +190,12 @@
   object-position: center;
   flex-shrink: 0;
   display: block;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  transition: opacity 0.3s ease;
+}
+
+.video-container video:not([src]) {
+  background: linear-gradient(135deg, #D4AF37 0%, #F4E87C 100%);
 }
 
 @media (max-width: 768px) {
@@ -505,6 +511,12 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  background: linear-gradient(135deg, #333 0%, #666 100%);
+  transition: opacity 0.3s ease;
+}
+
+.advantage-card:hover .advantage-card__video {
+  opacity: 1;
 }
 
 .advantage-card__overlay {

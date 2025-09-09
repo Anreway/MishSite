@@ -26,13 +26,18 @@ const AdvantageCard = ({
     >
       <div className="advantage-card__video-background">
         <video
-          autoPlay
+          preload="none"
           loop
           muted
           playsInline
           className="advantage-card__video"
+          onMouseEnter={(e) => {
+            e.target.play().catch(err => console.log('Video play failed:', err));
+          }}
+          onError={(e) => console.log('Advantage video error:', e)}
         >
           <source src={data.videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
         <div className="advantage-card__overlay"></div>
       </div>

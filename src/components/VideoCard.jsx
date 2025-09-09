@@ -28,13 +28,20 @@ const VideoCard = ({
       <div className="tilted-card-inner">
         <div className="video-container tilted-card-img">
           <video
-            autoPlay
+            preload="metadata"
             loop
             muted
             playsInline
             className="tilted-card-img"
+            onLoadStart={() => console.log('Video loading started')}
+            onCanPlayThrough={() => {
+              const video = document.querySelector('.tilted-card-img video');
+              if (video) video.play().catch(e => console.log('Video autoplay failed:', e));
+            }}
+            onError={(e) => console.log('Video load error:', e)}
           >
             <source src={data.videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
         </div>
       </div>
