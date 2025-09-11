@@ -445,6 +445,24 @@
   }
 }
 
+/* Products Section Styles */
+.products-section {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.products-menu-container {
+  position: relative;
+  max-width: 1400px;
+  width: 100%;
+  height: 400px;
+}
+
 /* Advantages Section Styles */
 .advantages-section {
   position: relative;
@@ -830,7 +848,112 @@
   text-decoration: underline;
 }
 
+/* Menu Button Container */
+.menu-button-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.menu-toggle-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: #2d2d2d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.menu-toggle-button:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.menu-toggle-button:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+.menu-toggle-textWrap {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 60px;
+}
+
+.menu-toggle-textInner {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.menu-toggle-line-text {
+  display: block;
+  height: 1em;
+  line-height: 1;
+  font-family: inherit;
+}
+
+.menu-toggle-icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.menu-toggle-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.menu-toggle-line-v {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.global-menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2000;
+}
+
 @media (max-width: 768px) {
+  .products-section {
+    padding: 2rem 1rem;
+  }
+  
+  .products-menu-container {
+    height: 300px;
+  }
+  
   .contact-section {
     padding: 2rem 1rem;
   }

@@ -12,6 +12,7 @@ import VideoCard from './components/VideoCard';
 import ButtonCard from './components/ButtonCard';
 import AdvantageCard from './components/AdvantageCard';
 import ContactCard from './components/ContactCard';
+import FlowingMenu from './components/FlowingMenu';
 import GlobalSpotlight from './components/GlobalSpotlight';
 import useMobileDetection from './hooks/useMobileDetection';
 
@@ -25,7 +26,9 @@ const MagicBento = ({
   enableTilt = false,
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
-  enableMagnetism = true
+  enableMagnetism = true,
+  onMenuToggle,
+  isMenuOpen = false
 }) => {
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
@@ -58,6 +61,8 @@ const MagicBento = ({
           enableTilt={enableTilt}
           clickEffect={clickEffect}
           enableMagnetism={enableMagnetism}
+          onMenuToggle={onMenuToggle}
+          isMenuOpen={isMenuOpen}
         />
 
         <VideoCard
@@ -88,6 +93,12 @@ const MagicBento = ({
               onClick={handleButtonCardClick}
             />
           ))}
+        </div>
+      </div>
+
+      <div className="products-section">
+        <div className="products-menu-container">
+          <FlowingMenu items={cardData.flowingMenuItems} />
         </div>
       </div>
 
