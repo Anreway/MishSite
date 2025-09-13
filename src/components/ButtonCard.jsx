@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ParticleCard from './ParticleCard';
 
 const ButtonCard = ({ 
@@ -12,8 +13,12 @@ const ButtonCard = ({
   enableMagnetism,
   onClick 
 }) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    if (onClick) {
+    if (data.link && data.link !== '#') {
+      navigate(data.link);
+    } else if (onClick) {
       onClick(data.id);
     }
   };

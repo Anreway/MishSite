@@ -10,7 +10,7 @@ function HomePage() {
     { label: 'RISE Milk', ariaLabel: 'Молочная продукция RISE', link: '/rise-milk' },
     { label: 'RISE Agro', ariaLabel: 'Агро продукция RISE', link: '/rise-agro' },
     { label: 'RISE Meat', ariaLabel: 'Мясная продукция RISE', link: '/rise-meat' },
-    { label: 'RISE Bakery', ariaLabel: 'Бакалейные товары RISE', link: '/rise-bakery' },
+    { label: 'RISE Grocery', ariaLabel: 'Бакалейные товары RISE', link: '/rise-grocery' },
     { label: 'О компании', ariaLabel: 'Информация о компании', link: '/about' },
     { label: 'Сотрудничество', ariaLabel: 'Возможности сотрудничества', link: '/cooperation' }
   ]

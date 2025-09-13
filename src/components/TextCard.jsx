@@ -102,7 +102,22 @@ const TextCard = ({
           <p className="card__description">
             {data.description}
           </p>
-          <button className="card__button">{data.buttonText}</button>
+          <button 
+            className="card__button"
+            onClick={() => {
+              if (data.buttonText === "Оставить заявку") {
+                const contactSection = document.querySelector('.contact-section');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }
+            }}
+          >
+            {data.buttonText}
+          </button>
         </div>
       </div>
 

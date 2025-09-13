@@ -21,13 +21,15 @@ export const cardData = {
       id: "about",
       title: "О КОМПАНИИ",
       backgroundColor: "#F4E87C",
-      glowColor: "244, 232, 124"
+      glowColor: "244, 232, 124",
+      link: "/about"
     },
     {
       id: "cooperation",
       title: "СОТРУДНИЧЕСТВО",
       backgroundColor: "#F4E87C", 
-      glowColor: "244, 232, 124"
+      glowColor: "244, 232, 124",
+      link: "/cooperation"
     }
   ],
   
@@ -36,25 +38,25 @@ export const cardData = {
       id: "dairy",
       text: "Молочная продукция",
       image: "/media/FloatingImage_1.jpeg",
-      link: "#"
+      link: "/rise-milk"
     },
     {
       id: "agro",
       text: "Агро продукция",
       image: "/media/FloatingImage_2.jpeg", 
-      link: "#"
+      link: "/rise-agro"
     },
     {
       id: "meat",
       text: "Мясная продукция",
       image: "/media/FloatingImage_3.jpeg",
-      link: "#"
+      link: "/rise-meat"
     },
     {
       id: "grocery",
       text: "Бакалея",
       image: "/media/FloatingImage_4.jpeg",
-      link: "#"
+      link: "/rise-grocery"
     }
   ],
   
@@ -88,7 +90,7 @@ export const cardData = {
   contactCard: {
     title: "МЫ ОТКРЫТЫ ДЛЯ СОТРУДНИЧЕСТВА С ВАМИ",
     subtitle: "Приглашаем к долгосрочному сотрудничеству оптовых покупателей, региональных дистрибьюторов, предприятия перерабатывающего комплекса.",
-    description: "Отправьте заявку на интересующую вас молочную продукцию и получите выгодное предложение от компании РАЙЗ.",
+    description: "Отправьте заявку на интересующую вас продукцию и получите выгодное предложение от компании РАЙЗ.",
     logo: "/media/Logo.png",
     companyName: "ООО «РАЙЗ»",
     companyDescription: "ИНН: 2225229805",

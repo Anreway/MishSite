@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage'
 import RiseMilkPage from './pages/RiseMilkPage'
 import RiseAgroPage from './pages/RiseAgroPage'
 import RiseMeatPage from './pages/RiseMeatPage'
-import RiseBakeryPage from './pages/RiseBakeryPage'
+import RiseGroceryPage from './pages/RiseGroceryPage'
 import AboutPage from './pages/AboutPage'
 import CooperationPage from './pages/CooperationPage'
 
@@ -17,7 +17,7 @@ function App() {
         <Route path="/rise-milk" element={<RiseMilkPage />} />
         <Route path="/rise-agro" element={<RiseAgroPage />} />
         <Route path="/rise-meat" element={<RiseMeatPage />} />
-        <Route path="/rise-bakery" element={<RiseBakeryPage />} />
+        <Route path="/rise-grocery" element={<RiseGroceryPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cooperation" element={<CooperationPage />} />
       </Routes>

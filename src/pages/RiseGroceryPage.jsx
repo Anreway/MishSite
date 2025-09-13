@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function RiseBakeryPage() {
+function RiseGroceryPage() {
   const navigate = useNavigate()
 
   return (
@@ -22,7 +22,7 @@ function RiseBakeryPage() {
         marginBottom: '2rem',
         textTransform: 'uppercase'
       }}>
-        RISE Bakery
+        RISE Grocery
       </h1>
       
       <p style={{
@@ -32,7 +32,7 @@ function RiseBakeryPage() {
         maxWidth: '600px',
         lineHeight: '1.6'
       }}>
-        Здесь будет информация о бакалейных товарах компании RISE.
+        Здесь будет информация о бакалейной продукции компании RISE.
       </p>
 
       <button 
@@ -65,4 +65,4 @@ function RiseBakeryPage() {
   )
 }
 
-export default RiseBakeryPage
+export default RiseGroceryPage
