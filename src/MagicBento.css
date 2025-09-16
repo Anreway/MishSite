@@ -1101,6 +1101,109 @@
   }
 }
 
+/* Text Section Styles */
+.text-section {
+  padding: 3rem 4rem;
+  background: transparent;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.text-section__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #584D3D;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: -0.5px;
+}
+
+.text-section__content {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.text-section__block {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 248, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  border: 2px solid rgba(244, 232, 124, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(244, 232, 124, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.text-section__block:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(244, 232, 124, 0.3),
+    0 15px 35px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(244, 232, 124, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(244, 232, 124, 0.6);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(252, 252, 252, 0.95) 100%);
+}
+
+.text-section__block-title {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.3px;
+  position: relative;
+}
+
+.text-section__block-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #F4E87C, #E6D65A);
+  border-radius: 1px;
+}
+
+.text-section__block-content {
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  line-height: 1.8;
+  color: #444;
+  margin: 0;
+  text-align: justify;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .text-section {
+    padding: 2rem 1rem;
+  }
+  
+  .text-section__title {
+    margin-bottom: 2rem;
+  }
+  
+  .text-section__content {
+    gap: 1.5rem;
+  }
+  
+  .text-section__block {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .text-section__block:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+  
+  .text-section__block-content {
+    text-align: left;
+  }
+}
+
 /* Product Card Styles */
 .product-card {
   position: relative;

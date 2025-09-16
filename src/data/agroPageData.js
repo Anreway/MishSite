@@ -30,7 +30,7 @@ export const agroPageData = {
       address: "656043, Алтайский край, г Барнаул, Социалистический пр-кт, зд. 23 стр. 1, офис 13"
     },
     contacts: {
-      phones: ["8 (3852) 25-67-89", "8 (983) 456-78-90"],
+      phones: ["+7 963 509 3873"],
       emails: ["raise-agro@mail.ru"]
     }
   },
