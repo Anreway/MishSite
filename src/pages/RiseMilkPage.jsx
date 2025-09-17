@@ -7,22 +7,28 @@ import {
   DEFAULT_GLOW_COLOR
 } from '../constants';
 import { milkPageData } from '../data/milkPageData';
+import { useTranslation } from '../contexts/LanguageContext';
+import { useTranslatedPageData } from '../hooks/useTranslatedPageData';
 import BentoCardGrid from '../components/BentoCardGrid';
 import TextCard from '../components/TextCard';
 import VideoCard from '../components/VideoCard';
 import ContactCard from '../components/ContactCard';
 import ProductCard from '../components/ProductCard';
 import GlobalSpotlight from '../components/GlobalSpotlight';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import useMobileDetection from '../hooks/useMobileDetection';
 
 function RiseMilkPage() {
   const navigate = useNavigate()
+  const { t } = useTranslation();
+  const translatedData = useTranslatedPageData('milk', milkPageData);
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = isMobile;
 
   return (
     <div className="App">
+      <LanguageSwitcher />
       <GlobalSpotlight
         gridRef={gridRef}
         disableAnimations={shouldDisableAnimations}
@@ -36,15 +42,15 @@ function RiseMilkPage() {
           className="back-button"
           onClick={() => navigate('/')}
           type="button"
-          aria-label="Назад на главную"
+          aria-label={t('common.backToHome')}
         >
-          ← Назад на главную
+          ← {t('common.backToHome')}
         </button>
       </div>
 
       <BentoCardGrid gridRef={gridRef}>
         <TextCard
-          data={milkPageData.textCard}
+          data={translatedData.textCard}
           textAutoHide={true}
           enableBorderGlow={true}
           shouldDisableAnimations={shouldDisableAnimations}
@@ -58,7 +64,7 @@ function RiseMilkPage() {
         />
 
         <VideoCard
-          data={milkPageData.videoCard}
+          data={translatedData.videoCard}
           enableBorderGlow={true}
           shouldDisableAnimations={shouldDisableAnimations}
           particleCount={DEFAULT_PARTICLE_COUNT}
@@ -70,9 +76,9 @@ function RiseMilkPage() {
       </BentoCardGrid>
 
       <div className="milk-products-section">
-        <h2 className="milk-products-title">НАШ АССОРТИМЕНТ</h2>
+        <h2 className="milk-products-title">{t('milk.assortmentTitle')}</h2>
         <div className="milk-products-grid">
-          {milkPageData.milkCategories.map((categoryData) => (
+          {translatedData.milkCategories.map((categoryData) => (
             <ProductCard
               key={categoryData.id}
               data={categoryData}
@@ -89,7 +95,7 @@ function RiseMilkPage() {
       </div>
 
       <div className="contact-section">
-        <ContactCard data={milkPageData.contactCard} />
+        <ContactCard data={translatedData.contactCard} />
       </div>
     </div>
   )

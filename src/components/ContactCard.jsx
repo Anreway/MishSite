@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const ContactCard = ({ data }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -44,7 +46,7 @@ const ContactCard = ({ data }) => {
               <input
                 type="text"
                 name="name"
-                placeholder="Ваше имя"
+                placeholder={t('contact.form.name')}
                 value={formData.name}
                 onChange={handleInputChange}
                 className="contact-form__input"
@@ -56,7 +58,7 @@ const ContactCard = ({ data }) => {
               <input
                 type="tel"
                 name="phone"
-                placeholder="+7 (___) ___-__-__"
+                placeholder={t('contact.form.phone')}
                 value={formData.phone}
                 onChange={handleInputChange}
                 className="contact-form__input"
@@ -68,7 +70,7 @@ const ContactCard = ({ data }) => {
               <input
                 type="email"
                 name="email"
-                placeholder="E-mail (необязательно)"
+                placeholder={t('contact.form.email')}
                 value={formData.email}
                 onChange={handleInputChange}
                 className="contact-form__input"
@@ -78,7 +80,7 @@ const ContactCard = ({ data }) => {
             <div className="contact-form__field">
               <textarea
                 name="message"
-                placeholder="Сообщение (необязательно)"
+                placeholder={t('contact.form.message')}
                 value={formData.message}
                 onChange={handleInputChange}
                 className="contact-form__textarea"
@@ -97,8 +99,7 @@ const ContactCard = ({ data }) => {
                 />
                 <span className="contact-form__checkmark"></span>
                 <span className="contact-form__agreement-text">
-                  Отправляя запрос, вы даете согласие на обработку персональных данных и автоматически 
-                  соглашаетесь с нашей <a href="#" className="contact-form__link">Политикой конфиденциальности</a>
+                  {t('contact.form.agreement')} <a href="#" className="contact-form__link">{t('contact.form.privacyPolicy')}</a>
                 </span>
               </label>
             </div>
@@ -108,7 +109,7 @@ const ContactCard = ({ data }) => {
               className="contact-form__submit"
               disabled={!formData.agreement}
             >
-              Отправить
+              {t('common.send')}
             </button>
           </form>
         </div>

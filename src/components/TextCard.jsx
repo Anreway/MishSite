@@ -105,7 +105,9 @@ const TextCard = ({
           <button 
             className="card__button"
             onClick={() => {
-              if (data.buttonText === "Оставить заявку") {
+              // Check if button text contains submit request in any language
+              const isSubmitButton = data.buttonText === "Оставить заявку" || data.buttonText === "Submit Request";
+              if (isSubmitButton) {
                 const contactSection = document.querySelector('.contact-section');
                 if (contactSection) {
                   contactSection.scrollIntoView({ 

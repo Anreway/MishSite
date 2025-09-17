@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import MagicBento from '../MagicBento'
 import StaggeredMenu from '../components/StaggeredMenu'
+import LanguageSwitcher from '../components/LanguageSwitcher'
+import { useTranslation } from '../contexts/LanguageContext'
 
 function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t } = useTranslation()
 
   const menuItems = [
-    { label: 'Главная', ariaLabel: 'Перейти на главную страницу', link: '/' },
-    { label: 'RISE Milk', ariaLabel: 'Молочная продукция RISE', link: '/rise-milk' },
-    { label: 'RISE Agro', ariaLabel: 'Агро продукция RISE', link: '/rise-agro' },
-    { label: 'RISE Meat', ariaLabel: 'Мясная продукция RISE', link: '/rise-meat' },
-    { label: 'RISE Grocery', ariaLabel: 'Бакалейные товары RISE', link: '/rise-grocery' },
-    { label: 'О компании', ariaLabel: 'Информация о компании', link: '/about' },
-    { label: 'Сотрудничество', ariaLabel: 'Возможности сотрудничества', link: '/cooperation' }
+    { label: t('nav.home'), ariaLabel: t('nav.home'), link: '/' },
+    { label: t('nav.riseMilk'), ariaLabel: t('nav.riseMilk'), link: '/rise-milk' },
+    { label: t('nav.riseAgro'), ariaLabel: t('nav.riseAgro'), link: '/rise-agro' },
+    { label: t('nav.riseMeat'), ariaLabel: t('nav.riseMeat'), link: '/rise-meat' },
+    { label: t('nav.riseGrocery'), ariaLabel: t('nav.riseGrocery'), link: '/rise-grocery' },
+    { label: t('nav.about'), ariaLabel: t('nav.about'), link: '/about' },
+    { label: t('nav.cooperation'), ariaLabel: t('nav.cooperation'), link: '/cooperation' }
   ]
 
   const handleMenuToggle = () => {
@@ -21,6 +24,7 @@ function HomePage() {
 
   return (
     <>
+      <LanguageSwitcher />
       <MagicBento
         textAutoHide={true}
         enableSpotlight={true}

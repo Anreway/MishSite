@@ -5,10 +5,15 @@ import TextCard from '../components/TextCard';
 import VideoCard from '../components/VideoCard';
 import ContactCard from '../components/ContactCard';
 import TextSection from '../components/TextSection';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import { cooperationPageData } from '../data/cooperationPageData';
+import { useTranslation } from '../contexts/LanguageContext';
+import { useTranslatedPageData } from '../hooks/useTranslatedPageData';
 
 const CooperationPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const translatedData = useTranslatedPageData('cooperation', cooperationPageData);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -29,6 +34,7 @@ const CooperationPage = () => {
 
   return (
     <div className="page-container" ref={containerRef}>
+      <LanguageSwitcher />
       {/* Кнопка назад */}
       <button 
         onClick={() => navigate('/')} 
@@ -59,14 +65,14 @@ const CooperationPage = () => {
           e.target.style.boxShadow = '0 4px 15px rgba(244, 232, 124, 0.3)';
         }}
       >
-        ← Назад на главную
+        ← {t('common.backToHome')}
       </button>
 
       {/* Основные карточки */}
       <section className="bento-section">
         <div className="card-grid">
           <TextCard 
-            data={cooperationPageData.textCard}
+            data={translatedData.textCard}
             enableBorderGlow={true}
             shouldDisableAnimations={false}
             particleCount={30}
@@ -77,7 +83,7 @@ const CooperationPage = () => {
             onClick={handleContactScroll}
           />
           <VideoCard 
-            data={cooperationPageData.videoCard}
+            data={translatedData.videoCard}
             enableBorderGlow={false}
             shouldDisableAnimations={false}
             particleCount={20}
@@ -90,11 +96,11 @@ const CooperationPage = () => {
       </section>
 
       {/* Текстовая секция сотрудничества */}
-      <TextSection data={cooperationPageData.cooperationContent} />
+      <TextSection data={translatedData.cooperationContent} />
 
       {/* Контактная форма */}
       <section className="contact-section">
-        <ContactCard data={cooperationPageData.contactCard} />
+        <ContactCard data={translatedData.contactCard} />
       </section>
     </div>
   );

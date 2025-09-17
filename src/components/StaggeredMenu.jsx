@@ -1,6 +1,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
+import { useTranslation } from '../contexts/LanguageContext';
 import './StaggeredMenu.css';
 
 export const StaggeredMenu = ({
@@ -53,6 +54,7 @@ export const StaggeredMenu = ({
   const iconRef = useRef(null);
   const textInnerRef = useRef(null);
   const textWrapRef = useRef(null);
+  const { t } = useTranslation();
   const [textLines, setTextLines] = useState(['Menu', 'Close']);
 
   const openTlRef = useRef(null);
@@ -65,6 +67,11 @@ export const StaggeredMenu = ({
   const itemEntranceTweenRef = useRef(null);
 
   const navigate = useNavigate();
+
+  // Update text lines when language changes
+  React.useEffect(() => {
+    setTextLines([t('nav.menu'), t('nav.close')]);
+  }, [t]);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -289,13 +296,15 @@ export const StaggeredMenu = ({
     if (!inner) return;
     textCycleAnimRef.current?.kill();
 
-    const currentLabel = opening ? 'Menu' : 'Close';
-    const targetLabel = opening ? 'Close' : 'Menu';
+    const menuText = t('nav.menu');
+    const closeText = t('nav.close');
+    const currentLabel = opening ? menuText : closeText;
+    const targetLabel = opening ? closeText : menuText;
     const cycles = 3;
     const seq = [currentLabel];
     let last = currentLabel;
     for (let i = 0; i < cycles; i++) {
-      last = last === 'Menu' ? 'Close' : 'Menu';
+      last = last === menuText ? closeText : menuText;
       seq.push(last);
     }
     if (last !== targetLabel) seq.push(targetLabel);
@@ -310,10 +319,18 @@ export const StaggeredMenu = ({
       duration: 0.5 + lineCount * 0.07,
       ease: 'power4.out'
     });
-  }, []);
+  }, [t]);
 
   const handleItemClick = useCallback((item) => {
-    // Close menu first
+    console.log('Menu item clicked:', item);
+    
+    // Navigate immediately
+    if (item.link && item.link !== '#') {
+      console.log('Navigating to:', item.link);
+      navigate(item.link);
+    }
+    
+    // Then close menu
     if (externalOnToggle) {
       externalOnToggle();
     } else {
@@ -325,11 +342,6 @@ export const StaggeredMenu = ({
       animateIcon(target);
       animateColor(target);
       animateText(target);
-    }
-
-    // Navigate to the route
-    if (item.link && item.link !== '#') {
-      navigate(item.link);
     }
   }, [externalOnToggle, navigate, playClose, animateIcon, animateColor, animateText, onMenuClose]);
 

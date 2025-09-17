@@ -5,7 +5,8 @@ import {
   DEFAULT_SPOTLIGHT_RADIUS,
   DEFAULT_GLOW_COLOR
 } from './constants';
-import { cardData } from './data/cardData';
+import { useTranslation } from './contexts/LanguageContext';
+import { useTranslatedCardData } from './hooks/useTranslatedCardData';
 import BentoCardGrid from './components/BentoCardGrid';
 import TextCard from './components/TextCard';
 import VideoCard from './components/VideoCard';
@@ -33,6 +34,8 @@ const MagicBento = ({
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const { t } = useTranslation();
+  const translatedCardData = useTranslatedCardData();
 
   const handleButtonCardClick = (cardId) => {
     console.log(`Button card clicked: ${cardId}`);
@@ -52,7 +55,7 @@ const MagicBento = ({
 
       <BentoCardGrid gridRef={gridRef}>
         <TextCard
-          data={cardData.textCard}
+          data={translatedCardData.textCard}
           textAutoHide={textAutoHide}
           enableBorderGlow={enableBorderGlow}
           shouldDisableAnimations={shouldDisableAnimations}
@@ -66,7 +69,7 @@ const MagicBento = ({
         />
 
         <VideoCard
-          data={cardData.videoCard}
+          data={translatedCardData.videoCard}
           enableBorderGlow={enableBorderGlow}
           shouldDisableAnimations={shouldDisableAnimations}
           particleCount={particleCount}
@@ -79,7 +82,7 @@ const MagicBento = ({
 
       <div className="button-cards-section">
         <div className="button-cards-grid">
-          {cardData.buttonCards.map((buttonCardData) => (
+          {translatedCardData.buttonCards.map((buttonCardData) => (
             <ButtonCard
               key={buttonCardData.id}
               data={buttonCardData}
@@ -98,14 +101,14 @@ const MagicBento = ({
 
       <div className="products-section">
         <div className="products-menu-container">
-          <FlowingMenu items={cardData.flowingMenuItems} />
+          <FlowingMenu items={translatedCardData.flowingMenuItems} />
         </div>
       </div>
 
       <div className="advantages-section">
-        <h2 className="advantages-title">Преимущества работы с нами</h2>
+        <h2 className="advantages-title">{t('home.advantagesTitle')}</h2>
         <div className="advantages-grid">
-          {cardData.advantageCards.map((advantageCardData) => (
+          {translatedCardData.advantageCards.map((advantageCardData) => (
             <AdvantageCard
               key={advantageCardData.id}
               data={advantageCardData}
@@ -122,7 +125,7 @@ const MagicBento = ({
       </div>
 
       <div className="contact-section">
-        <ContactCard data={cardData.contactCard} />
+        <ContactCard data={translatedCardData.contactCard} />
       </div>
     </>
   );

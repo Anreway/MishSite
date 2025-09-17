@@ -5,10 +5,15 @@ import TextCard from '../components/TextCard';
 import VideoCard from '../components/VideoCard';
 import ContactCard from '../components/ContactCard';
 import TextSection from '../components/TextSection';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import { aboutPageData } from '../data/aboutPageData';
+import { useTranslation } from '../contexts/LanguageContext';
+import { useTranslatedPageData } from '../hooks/useTranslatedPageData';
 
 const AboutPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const translatedData = useTranslatedPageData('about', aboutPageData);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -29,6 +34,7 @@ const AboutPage = () => {
 
   return (
     <div className="page-container" ref={containerRef}>
+      <LanguageSwitcher />
       {/* Кнопка назад */}
       <button 
         onClick={() => navigate('/')} 
@@ -59,14 +65,14 @@ const AboutPage = () => {
           e.target.style.boxShadow = '0 4px 15px rgba(244, 232, 124, 0.3)';
         }}
       >
-        ← Назад на главную
+        ← {t('common.backToHome')}
       </button>
 
       {/* Основные карточки */}
       <section className="bento-section">
         <div className="card-grid">
           <TextCard 
-            data={aboutPageData.textCard}
+            data={translatedData.textCard}
             enableBorderGlow={true}
             shouldDisableAnimations={false}
             particleCount={30}
@@ -77,7 +83,7 @@ const AboutPage = () => {
             onClick={handleContactScroll}
           />
           <VideoCard 
-            data={aboutPageData.videoCard}
+            data={translatedData.videoCard}
             enableBorderGlow={false}
             shouldDisableAnimations={false}
             particleCount={20}
@@ -90,11 +96,11 @@ const AboutPage = () => {
       </section>
 
       {/* Текстовая секция о компании */}
-      <TextSection data={aboutPageData.aboutContent} />
+      <TextSection data={translatedData.aboutContent} />
 
       {/* Контактная форма */}
       <section className="contact-section">
-        <ContactCard data={aboutPageData.contactCard} />
+        <ContactCard data={translatedData.contactCard} />
       </section>
     </div>
   );
